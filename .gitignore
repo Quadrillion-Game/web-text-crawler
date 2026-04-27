@@ -216,3 +216,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Crawler output
+data/urls/*.csv
+data/texts/*.csv

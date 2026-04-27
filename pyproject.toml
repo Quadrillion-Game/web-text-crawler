@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "web-text-crawler"
+version = "0.1.0"
+description = "Google検索結果を起点にBFSでWebページをクロールし本文テキストをCSVに保存するCLIツール"
+requires-python = ">=3.10"
+dependencies = [
+    "click>=8.1",
+    "httpx>=0.25",
+    "beautifulsoup4>=4.12",
+    "lxml>=4.9",
+    "trafilatura>=1.6",
+    "selenium>=4.15",
+    "webdriver-manager>=4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+]
+
+[project.scripts]
+crawling = "crawling.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["crawling*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
