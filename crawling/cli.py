@@ -9,6 +9,7 @@ from crawling.crawler.fetcher import Fetcher
 from crawling.crawler.robots import RobotsChecker
 from crawling.crawler.url_discovery import discover_urls
 from crawling.extractor.text_extractor import extract_text
+from crawling.extractor.tokenizer import tokenize
 from crawling.search.selenium_searcher import SeleniumSearcher
 from crawling.storage.csv_writer import write_urls_csv, write_texts_csv
 from crawling.utils.logger import setup_logger
@@ -90,12 +91,14 @@ def main(
                 continue
             seen_hashes.add(extracted.content_hash)
 
-            text_rows.append({
-                "url": extracted.url,
-                "title": extracted.title,
-                "text": extracted.text,
-                "content_hash": extracted.content_hash,
-            })
+            words = tokenize(extracted.text)
+            for word in words:
+                text_rows.append({
+                    "url": extracted.url,
+                    "title": extracted.title,
+                    "text": word,
+                    "content_hash": extracted.content_hash,
+                })
 
     # Save text results
     texts_path = Path(config.output_dir) / "texts" / f"{_safe_filename(query)}.csv"
