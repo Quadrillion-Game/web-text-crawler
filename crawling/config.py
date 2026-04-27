@@ -11,7 +11,7 @@ class Config:
     search_top_n: int = 10
 
     # BFS settings
-    max_depth: int = 2
+    max_depth: int = 0
     max_total_pages: int = 500
     max_pages_per_seed: int = 100
     max_links_per_page: int = 30

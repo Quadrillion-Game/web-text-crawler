@@ -18,7 +18,7 @@ logger = setup_logger(__name__)
 
 @click.command()
 @click.argument("query")
-@click.option("--depth", default=2, type=int, help="BFS探索の最大深さ (default: 2)")
+@click.option("--depth", default=0, type=int, help="BFS探索の最大深さ (default: 0)")
 @click.option("--max-pages", default=500, type=int, help="全体の最大ページ数 (default: 500)")
 @click.option("--output-dir", default="data", help="出力ディレクトリ (default: data)")
 @click.option("--delay", default=1.0, type=float, help="リクエスト間隔(秒) (default: 1.0)")
