@@ -16,4 +16,10 @@ pip install -e ".[dev]"
 crawling "検索キーワード"
 ```
 
-結果は `data/urls/` と `data/texts/` にCSVとして出力される。オプションは `crawling --help` で確認。
+`--depth` でBFS探索の最大深さを指定できる（デフォルト: 0 = シードURLのみ）。
+
+```bash
+crawling "検索キーワード" --depth 2
+```
+
+結果は `data/urls/` と `data/texts/` にCSVとして出力される。その他のオプションは `crawling --help` で確認。
